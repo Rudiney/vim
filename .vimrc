@@ -8,6 +8,7 @@ set termguicolors
 set autowrite
 set ruler
 set showcmd
+set mouse=a
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -26,13 +27,12 @@ set textwidth=120
 set colorcolumn=+1
 
 " Numbers
-set number
+set nu rnu
 set numberwidth=5
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-
 
 call plug#begin()
 
@@ -51,6 +51,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'iberianpig/tig-explorer.vim'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
