@@ -44,15 +44,19 @@ Plug 'liuchengxu/vim-clap'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'nerdypepper/agila.vim'
+" Plug 'nerdypepper/agila.vim'
+Plug 'sickill/vim-monokai'
 Plug 'tpope/vim-rails'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 Plug 'aserebryakov/vim-todo-lists'
+Plug 'iberianpig/tig-explorer.vim'
 
 call plug#end()
 
-color agila
+" color agila
+" color dracula
+color monokai
 
 " NERDTree handy configs
 let NERDTreeShowHidden=1  "  Always show dot files
