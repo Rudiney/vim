@@ -34,24 +34,31 @@ set numberwidth=5
 set splitbelow
 set splitright
 
+" where to save swp files
+set directory^=$HOME/vimswpfiles//
+
+" disable line wrap
+set textwidth=0 
+set wrapmargin=0
+
 call plug#begin()
+  Plug 'tpope/vim-sensible'
+  Plug 'preservim/nerdtree'
+  Plug 'dense-analysis/ale'
+  Plug 'liuchengxu/vim-clap'
 
-Plug 'tpope/vim-sensible'
-Plug 'preservim/nerdtree'
-Plug 'dense-analysis/ale'
-Plug 'liuchengxu/vim-clap'
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+  " Plug 'dracula/vim', { 'as': 'dracula' }
+  " Plug 'nerdypepper/agila.vim'
+  Plug 'sickill/vim-monokai'
+  Plug 'tpope/vim-rails'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'nerdypepper/agila.vim'
-Plug 'sickill/vim-monokai'
-Plug 'tpope/vim-rails'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-
-Plug 'aserebryakov/vim-todo-lists'
-Plug 'iberianpig/tig-explorer.vim'
-Plug 'vim-airline/vim-airline'
+  Plug 'aserebryakov/vim-todo-lists'
+  Plug 'iberianpig/tig-explorer.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'markstory/vim-zoomwin'
 
 call plug#end()
 
