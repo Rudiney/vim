@@ -58,6 +58,8 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'markstory/vim-zoomwin'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'svermeulen/vim-easyclip'
+  Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
