@@ -38,13 +38,11 @@ set splitright
 set directory^=$HOME/vimswpfiles//
 
 " disable line wrap
-set textwidth=0 
-set wrapmargin=0
+set nowrap
 
 call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'preservim/nerdtree'
-  Plug 'dense-analysis/ale'
   Plug 'liuchengxu/vim-clap'
 
   Plug '/usr/local/opt/fzf'
@@ -59,6 +57,7 @@ call plug#begin()
   Plug 'iberianpig/tig-explorer.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'markstory/vim-zoomwin'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
 
@@ -70,14 +69,11 @@ color monokai
 let NERDTreeShowHidden=1  "  Always show dot files
 let NERDTreeQuitOnOpen=1
 
-" ALE: https://github.com/dense-analysis/ale#usage
-let g:ale_fixers = {'javascript': ['prettier-standard']}
-let g:ale_linters = {'javascript': ['prettier-standard']}
-
 let g:clap_theme = 'material_design_dark'
 
 map <Leader>n  :NERDTreeFind<CR> 
-map <Leader>p :Clap files<CR> 
+map <Leader>y :Clap files<CR> 
+nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
 map <Leader>' :q<CR>
 
