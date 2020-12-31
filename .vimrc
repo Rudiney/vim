@@ -61,6 +61,8 @@ call plug#begin()
   Plug 'svermeulen/vim-easyclip'
   Plug 'junegunn/vim-peekaboo'
 
+  Plug 'vitalk/vim-simple-todo'
+
 call plug#end()
 
 " color agila
@@ -86,6 +88,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 nnoremap <Leader>t :vsp<CR>
+
+" Override simple todo default keys
+let g:simple_todo_map_keys = 0
+nmap <Leader>o <Plug>(simple-todo-below)
+nmap <Leader>O <Plug>(simple-todo-above)
+nmap <Leader>x <Plug>(simple-todo-mark-switch)
+
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * silent NERDTreeMirror
