@@ -40,13 +40,16 @@ set directory^=$HOME/vimswpfiles//
 " disable line wrap
 set nowrap
 
+" ignore node_modules
+set wildignore+=*/node_modules/*
+
 call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'preservim/nerdtree'
   Plug 'liuchengxu/vim-clap'
 
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
+  " Plug '/usr/local/opt/fzf'
+  " Plug 'junegunn/fzf.vim'
   " Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'nerdypepper/agila.vim'
   Plug 'sickill/vim-monokai'
@@ -56,12 +59,17 @@ call plug#begin()
   Plug 'aserebryakov/vim-todo-lists'
   Plug 'iberianpig/tig-explorer.vim'
   Plug 'vim-airline/vim-airline'
+  " Leader+z to toggle focus a window
   Plug 'markstory/vim-zoomwin'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'svermeulen/vim-easyclip'
   Plug 'junegunn/vim-peekaboo'
-
   Plug 'vitalk/vim-simple-todo'
+  Plug 'slim-template/vim-slim'
+
+  Plug 'yuezk/vim-js'
+  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'jreybert/vimagit'
 
 call plug#end()
 
@@ -74,6 +82,13 @@ let NERDTreeShowHidden=1  "  Always show dot files
 let NERDTreeQuitOnOpen=1
 
 let g:clap_theme = 'material_design_dark'
+
+" Disables quick-fix to auto open when files have errors
+let g:prettier#quickfix_enabled=0
+
+" make nerdtree prettier:
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 map <Leader>n  :NERDTreeFind<CR> 
 map <Leader>y :Clap files<CR> 
@@ -95,10 +110,11 @@ nmap <Leader>o <Plug>(simple-todo-below)
 nmap <Leader>O <Plug>(simple-todo-above)
 nmap <Leader>x <Plug>(simple-todo-mark-switch)
 
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * silent NERDTreeMirror
+" open nerdtreen on every new buffer?
+autocmd vimenter * if !argc() | NERDTree | endif
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+
+
