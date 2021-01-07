@@ -69,7 +69,6 @@ call plug#begin()
 
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'jreybert/vimagit'
 
 call plug#end()
 
