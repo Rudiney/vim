@@ -17,13 +17,13 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:␣
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" Make it obvious where 80 characters is
-set textwidth=120
+" Make it obvious where limit characters is
+set textwidth=100
 set colorcolumn=+1
 
 " Numbers
@@ -39,6 +39,9 @@ set directory^=$HOME/vimswpfiles//
 
 " disable line wrap
 set nowrap
+
+" highlight the current line
+set cursorline
 
 " ignore node_modules
 set wildignore+=*/node_modules/*
@@ -69,12 +72,16 @@ call plug#begin()
 
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'tpope/vim-commentary'
 
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " color agila
 " color dracula
 color monokai
+" colorscheme dracula 
 
 " NERDTree handy configs
 let NERDTreeShowHidden=1  "  Always show dot files
@@ -91,6 +98,7 @@ let NERDTreeDirArrows = 1
 
 map <Leader>n  :NERDTreeFind<CR> 
 map <Leader>y :Clap files<CR> 
+map <Leader>f :Clap grep2<CR> 
 nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
 map <Leader>' :q<CR>
@@ -109,11 +117,18 @@ nmap <Leader>o <Plug>(simple-todo-below)
 nmap <Leader>O <Plug>(simple-todo-above)
 nmap <Leader>x <Plug>(simple-todo-mark-switch)
 
-" open nerdtreen on every new buffer?
-autocmd vimenter * if !argc() | NERDTree | endif
+" use // to search the current visual selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+" hightlight searchen
+set hlsearch
 
+" :Cl command adds a console.log :D
+command Cl exe "normal! a console.log('', )\<ESC>"
+" :Gs go to Tig Status
+command Gs exe "Tig status"
 
+" Change the cursor style on differente modes (https://vim.fandom.com/wiki/Configuring_the_cursor)
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " insert mode = a bar
+let &t_SR = "\<Esc>]50;CursorShape=2\x7" " replace mode = an underscore
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " normal mode = a block
