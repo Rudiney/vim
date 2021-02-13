@@ -76,6 +76,8 @@ call plug#begin()
 
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'Yggdroot/indentLine'
+  Plug 'jlanzarotta/bufexplorer'
+  Plug 'mattn/emmet-vim'
 call plug#end()
 
 " color agila
@@ -96,9 +98,14 @@ let g:prettier#quickfix_enabled=0
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-map <Leader>n  :NERDTreeFind<CR> 
-map <Leader>y :Clap files<CR> 
-map <Leader>f :Clap grep2<CR> 
+" change the emmet trigger shortcut
+let g:user_emmet_leader_key='<Leader>'
+" enable emmet only in normal visual mode 
+let g:user_emmet_mode='nv'
+
+map <Leader>n  :NERDTreeFind<CR>
+map <Leader>y :Clap files<CR>
+map <Leader>f :Clap grep2<CR>
 nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
 map <Leader>' :q<CR>
