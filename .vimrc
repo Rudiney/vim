@@ -45,6 +45,7 @@ set cursorline
 
 " ignore node_modules
 set wildignore+=*/node_modules/*
+set wildignore+=*/.git/*
 
 call plug#begin()
   Plug 'tpope/vim-sensible'
