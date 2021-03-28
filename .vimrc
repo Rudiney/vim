@@ -135,6 +135,8 @@ set hlsearch
 command Cl exe "normal! a console.log('', )\<ESC>"
 " :Gs go to Tig Status
 command Gs exe "Tig status"
+" :Lg to open LazyGit
+command Lg exe ":!lazygit"
 
 " Change the cursor style on differente modes (https://vim.fandom.com/wiki/Configuring_the_cursor)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " insert mode = a bar
