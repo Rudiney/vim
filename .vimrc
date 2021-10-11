@@ -47,6 +47,10 @@ set cursorline
 set wildignore+=*/node_modules/*
 set wildignore+=*/.git/*
 
+" folding
+set foldmethod=indent
+set foldlevel=10
+
 call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'preservim/nerdtree'
@@ -54,9 +58,10 @@ call plug#begin()
 
   " Plug '/usr/local/opt/fzf'
   " Plug 'junegunn/fzf.vim'
-  " Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'nerdypepper/agila.vim'
   Plug 'sickill/vim-monokai'
+  " Plug '1612492/github.vim'
   Plug 'tpope/vim-rails'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
@@ -79,12 +84,14 @@ call plug#begin()
   Plug 'Yggdroot/indentLine'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'mattn/emmet-vim'
+  Plug 'udalov/kotlin-vim'
 call plug#end()
 
 " color agila
-" color dracula
-color monokai
-" colorscheme dracula 
+color dracula
+" color monokai
+" color github
+colorscheme dracula 
 
 " NERDTree handy configs
 let NERDTreeShowHidden=1  "  Always show dot files
@@ -117,6 +124,18 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Moving lines: option + kjlh = ˚∆¬˙
+nnoremap ∆ :m .+1<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+
+nnoremap ˚ :m .-2<CR>==
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+nnoremap ˙ <<
+nnoremap ¬ >>
+
 nnoremap <Leader>t :vsp<CR>
 
 " Override simple todo default keys
@@ -133,12 +152,12 @@ set hlsearch
 
 " :Cl command adds a console.log :D
 command Cl exe "normal! a console.log('', )\<ESC>"
-" :Gs go to Tig Status
 command Gs exe "Tig status"
-" :Lg to open LazyGit
 command Lg exe ":!lazygit"
+command -nargs=* Rl exe ":!bin/rails <args>"
 
 " Change the cursor style on differente modes (https://vim.fandom.com/wiki/Configuring_the_cursor)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " insert mode = a bar
 let &t_SR = "\<Esc>]50;CursorShape=2\x7" " replace mode = an underscore
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " normal mode = a block
+
