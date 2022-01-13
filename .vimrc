@@ -10,6 +10,8 @@ set ruler
 set showcmd
 set mouse=a
 
+" set paste
+
 " Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
@@ -53,16 +55,19 @@ set foldlevel=10
 
 call plug#begin()
   Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-surround'
   Plug 'preservim/nerdtree'
   Plug 'liuchengxu/vim-clap'
 
   " Plug '/usr/local/opt/fzf'
   " Plug 'junegunn/fzf.vim'
-  Plug 'dracula/vim', { 'as': 'dracula' }
+  " Plug 'dracula/vim', { 'as': 'dracula' }
   " Plug 'nerdypepper/agila.vim'
   Plug 'sickill/vim-monokai'
   " Plug '1612492/github.vim'
   Plug 'tpope/vim-rails'
+  Plug 'thoughtbot/vim-rspec'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   Plug 'aserebryakov/vim-todo-lists'
@@ -85,13 +90,14 @@ call plug#begin()
   Plug 'jlanzarotta/bufexplorer'
   Plug 'mattn/emmet-vim'
   Plug 'udalov/kotlin-vim'
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " color agila
-color dracula
-" color monokai
+" color dracula
+" colorscheme dracula 
+color monokai
 " color github
-colorscheme dracula 
 
 " NERDTree handy configs
 let NERDTreeShowHidden=1  "  Always show dot files
@@ -110,6 +116,10 @@ let NERDTreeDirArrows = 1
 let g:user_emmet_leader_key='<Leader>'
 " enable emmet only in normal visual mode 
 let g:user_emmet_mode='nv'
+
+" enable airline tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 
 map <Leader>n  :NERDTreeFind<CR>
 map <Leader>y :Clap files<CR>
@@ -144,10 +154,21 @@ nmap <Leader>o <Plug>(simple-todo-below)
 nmap <Leader>O <Plug>(simple-todo-above)
 nmap <Leader>x <Plug>(simple-todo-mark-switch)
 
+" Custom vim-rspec command
+let g:rspec_command = "!bin/rspec {spec}"
+
+" <F8> run the current spec
+map <F8> :call RunCurrentSpecFile()<CR>
+" <F7> run the current spec at the current line!
+map <F7> :call RunNearestSpec()<CR>
+
+" <F5> repeats the last command
+map <F5> :<up><CR>
+
 " use // to search the current visual selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" hightlight searchen
+" hightlight searches
 set hlsearch
 
 " :Cl command adds a console.log :D
@@ -160,4 +181,3 @@ command -nargs=* Rl exe ":!bin/rails <args>"
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " insert mode = a bar
 let &t_SR = "\<Esc>]50;CursorShape=2\x7" " replace mode = an underscore
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " normal mode = a block
-
