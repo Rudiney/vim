@@ -126,7 +126,9 @@ map <Leader>y :Clap files<CR>
 map <Leader>f :Clap grep2<CR>
 nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
+map <Leader>w :w<CR>
 map <Leader>' :q<CR>
+map <Leader>q :q<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -147,6 +149,9 @@ nnoremap ˙ <<
 nnoremap ¬ >>
 
 nnoremap <Leader>t :vsp<CR>
+
+" disable Q to enter the annoying EX Mode
+nnoremap Q <nop>
 
 " Override simple todo default keys
 let g:simple_todo_map_keys = 0
