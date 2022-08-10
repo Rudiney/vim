@@ -122,8 +122,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 
 map <Leader>n  :NERDTreeFind<CR>
-map <Leader>y :Clap files<CR>
-map <Leader>f :Clap grep2<CR>
+map <Leader>y :Clap files +no-cache<CR>
+map <Leader>f :Clap grep2 +no-cache<CR>
 nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
 map <Leader>w :w<CR>
@@ -172,6 +172,13 @@ map <F5> :<up><CR>
 
 " use // to search the current visual selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" tab switching with Leader + 1, 2, ...
+map <Leader>1 1gt<CR>
+map <Leader>2 2gt<CR>
+map <Leader>3 3gt<CR>
+map <Leader>4 4gt<CR>
+map <Leader>5 5gt<CR>
 
 " hightlight searches
 set hlsearch
