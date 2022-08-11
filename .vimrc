@@ -53,6 +53,9 @@ set wildignore+=*/.git/*
 set foldmethod=indent
 set foldlevel=10
 
+" save swap files at ~/.vim/swapfiles
+set directory=$HOME/.vim/swapfiles//
+
 call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-endwise'

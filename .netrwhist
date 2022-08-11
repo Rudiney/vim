@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/rudineyfranceschi/.vim'
 let g:netrw_dirhist_3='/Users/rudineyfranceschi'
 let g:netrw_dirhist_2='/Users/rudineyaltairfranceschi/biz/devmaker/holdr/holdr-mobile'
 let g:netrw_dirhist_1='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionview-6.0.2/lib/action_view/helpers/tags'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/
 let g:netrw_dirhist_7='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionview-6.0.2'
 let g:netrw_dirhist_6='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionview-6.0.2/lib/action_view/helpers/tags'
 let g:netrw_dirhist_5='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionview-6.0.2/lib/action_view/helpers'
-let g:netrw_dirhist_4='/Users/rudineyaltairfranceschi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionview-6.0.2/lib/action_view'
