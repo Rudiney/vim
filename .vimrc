@@ -56,12 +56,17 @@ set foldlevel=10
 " save swap files at ~/.vim/swapfiles
 set directory=$HOME/.vim/swapfiles//
 
+" Better files find
+set path+=**
+set wildmenu
+" set wildmode=list:longest,full
+
 call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-surround'
   Plug 'preservim/nerdtree'
-  Plug 'liuchengxu/vim-clap'
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
   " Plug '/usr/local/opt/fzf'
   " Plug 'junegunn/fzf.vim'
@@ -94,6 +99,7 @@ call plug#begin()
   Plug 'mattn/emmet-vim'
   Plug 'udalov/kotlin-vim'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'github/copilot.vim'
 call plug#end()
 
 " color agila
@@ -126,7 +132,7 @@ let g:airline#extensions#tabline#show_buffers = 0
 
 map <Leader>n  :NERDTreeFind<CR>
 map <Leader>y :Clap files +no-cache<CR>
-map <Leader>f :Clap grep2 +no-cache<CR>
+map <Leader>f :Clap live_grep +no-cache<CR>
 nmap <Leader>p <Plug>(Prettier)
 map <Leader>s :w<CR>
 map <Leader>w :w<CR>
@@ -165,10 +171,14 @@ nmap <Leader>x <Plug>(simple-todo-mark-switch)
 " Custom vim-rspec command
 let g:rspec_command = "!bin/rspec {spec}"
 
-" <F8> run the current spec
-map <F8> :call RunCurrentSpecFile()<CR>
-" <F7> run the current spec at the current line!
-map <F7> :call RunNearestSpec()<CR>
+" <F8> run the current RSpec spec
+map <F8> :call RunCurrentSpecFile() <CR>
+" <F7> run the current RSpec spec at the current line!
+map <F7> :call RunNearestSpec() <CR>
+" <F9> run the current RSpec spec
+map <F9> :Rails test % <CR>
+" <F10> run the current RSpec spec at the current line!
+map <F10> :execute ':Rails test %\:'.line('.') <CR>
 
 " <F5> repeats the last command
 map <F5> :<up><CR>
