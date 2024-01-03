@@ -83,7 +83,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   " Leader+z to toggle focus a window
   Plug 'markstory/vim-zoomwin'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   Plug 'svermeulen/vim-easyclip'
   Plug 'junegunn/vim-peekaboo'
   Plug 'vitalk/vim-simple-todo'
@@ -176,12 +176,16 @@ map <F8> :call RunCurrentSpecFile() <CR>
 " <F7> run the current RSpec spec at the current line!
 map <F7> :call RunNearestSpec() <CR>
 " <F9> run the current RSpec spec
-map <F9> :Rails test % <CR>
+map <F9> :!bin/rails test % <CR>
 " <F10> run the current RSpec spec at the current line!
-map <F10> :execute ':Rails test %\:'.line('.') <CR>
+map <F10> :execute '!bin/rails test %\:'.line('.') <CR>
 
 " <F5> repeats the last command
-map <F5> :<up><CR>
+" map <F5> :<up><CR>
+
+"Rubocop shortcut
+map <Leader>r :!rubocop %<CR>
+map <Leader>R :!rubocop -A %<CR>
 
 " use // to search the current visual selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
